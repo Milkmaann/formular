@@ -2,11 +2,84 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Děkujeme za odeslání!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(270deg, #ff6ec4, #7873f5, #4facfe, #43e97b, #38f9d7, #fbc2eb);
+      background-size: 1200% 1200%;
+      animation: gradientBG 30s ease infinite;
+    }
+
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
+
+    .thank-you-box {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 30px 0 30px 0;
+      padding: 40px;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      backdrop-filter: blur(15px);
+      border: 5px double #fff;
+      animation: float 3s ease-in-out infinite alternate;
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); }
+      to { transform: translateY(-10px); }
+    }
+
+    .thank-you-box h1 {
+      margin-top: 0;
+      font-size: 2.5rem;
+      color: #6a11cb;
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .thank-you-box p {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    .thank-you-box a {
+      display: inline-block;
+      padding: 12px 25px;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border-radius: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .thank-you-box a:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+  </style>
 </head>
 <body>
-  <h1>Děkujeme za odeslání přihlášky!</h1>
-  <p>Vaše přihláška byla úspěšně odeslána. Brzy se vám ozveme.</p>
-  <a href="https://mgr--ladislav-viscur.cms.webnode.cz/">Zpět na hlavní stránku</a>
+  <div class="thank-you-box">
+    <h1>Děkujeme!</h1>
+    <p>Vaše přihláška byla úspěšně odeslána.<br>Brzy se vám ozveme.</p>
+    <a href="/">Zpět na hlavní stránku</a>
+  </div>
 </body>
 </html>
