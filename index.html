@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Přihláška</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    form {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+    h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #333;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+    }
+    button {
+      background: #2575fc;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #6a11cb;
+    }
+  </style>
+</head>
+<body>
+
+<form name="prihlaska" method="POST" data-netlify="true">
+  <h2>Přihláška</h2>
+  
+  <input type="text" name="jmeno" placeholder="Jméno" required>
+  <input type="text" name="prijmeni" placeholder="Příjmení" required>
+  <input type="text" name="bydliste" placeholder="Bydliště" required>
+  <input type="text" name="jmeno_ditete" placeholder="Jméno dítěte" required>
+  <textarea name="poznamka" placeholder="Poznámka / zpráva (nepovinné)"></textarea>
+  
+  <button type="submit">Odeslat přihlášku</button>
+</form>
+
+</body>
+</html>
