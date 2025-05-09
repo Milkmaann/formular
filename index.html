@@ -112,7 +112,7 @@
 </head>
 <body>
 
-<form name="prihlaska" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+<form name="prihlaska" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="prihlaska-form">
   <h2><i class="fa-solid fa-file-signature"></i> Přihláška</h2>
 
   <!-- Skrytý field pro ochranu proti spamu -->
@@ -165,12 +165,24 @@
     <label for="souhlas">Souhlasím se zpracováním osobních údajů</label>
   </div>
 
-  <button type="submit"><i class="fa-solid fa-paper-plane"></i> Odeslat přihlášku</button>
+  <button type="submit" id="submit-btn"><i class="fa-solid fa-paper-plane"></i> Odeslat přihlášku</button>
 
   <div class="link-container">
-    <a href="#" target="_blank">Přejít na hlavní stránku</a>
+    <a href="https://mgr--ladislav-viscur.cms.webnode.cz/" target="_blank">Přejít na hlavní stránku</a>
   </div>
 </form>
+
+<script>
+  document.getElementById('prihlaska-form').addEventListener('submit', function(event) {
+    event.preventDefault();  // Zabráníme defaultnímu odeslání formuláře
+    // Odešleme formulář
+    this.submit(); 
+    // Po odeslání přesměrujeme na jinou stránku
+    setTimeout(function() {
+      window.location.href = "https://mgr--ladislav-viscur.cms.webnode.cz/";
+    }, 500); // Přesměrování po půl vteřině, aby to vypadalo plynule
+  });
+</script>
 
 </body>
 </html>
