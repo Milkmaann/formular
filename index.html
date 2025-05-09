@@ -4,64 +4,172 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Přihláška</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     body {
-      font-family: sans-serif;
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff7e5f, #feb47b, #ffcc70, #f6d365, #c2e9fb, #76b2fe, #60c3ff, #67d3f1, #84fab0, #8fd3f4);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
     }
+    @keyframes gradientBG {
+      0% {background-position: 0% 50%;}
+      50% {background-position: 100% 50%;}
+      100% {background-position: 0% 50%;}
+    }
     form {
-      background: white;
+      background: rgba(255, 255, 255, 0.95);
       padding: 2rem;
-      border-radius: 10px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
       width: 100%;
-      max-width: 400px;
+      max-width: 500px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s;
+    }
+    form:hover {
+      transform: scale(1.02);
     }
     h2 {
       margin-top: 0;
       text-align: center;
       color: #333;
     }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
+    .input-group {
+      position: relative;
       margin-bottom: 15px;
+    }
+    .input-group i {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999;
+      transition: color 0.3s;
+    }
+    .input-group input,
+    .input-group select,
+    .input-group textarea {
+      width: 100%;
+      padding: 10px 10px 10px 35px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 10px;
       font-size: 1rem;
+      transition: border 0.3s, box-shadow 0.3s;
+    }
+    .input-group input:focus,
+    .input-group select:focus,
+    .input-group textarea:focus {
+      border: 1px solid #6a11cb;
+      box-shadow: 0 0 10px rgba(106, 17, 203, 0.4);
     }
     button {
-      background: #2575fc;
+      background: #6a11cb;
       color: white;
-      padding: 10px;
+      padding: 12px;
       width: 100%;
       border: none;
-      border-radius: 5px;
+      border-radius: 10px;
       font-size: 1rem;
       cursor: pointer;
+      transition: background 0.3s, box-shadow 0.3s;
     }
     button:hover {
-      background: #6a11cb;
+      background: #2575fc;
+      box-shadow: 0 5px 15px rgba(37, 117, 252, 0.5);
+    }
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+    .checkbox-container input {
+      width: auto;
+      margin-right: 10px;
+    }
+    .hidden {
+      display: none;
+    }
+    .link-container {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .link-container a {
+      color: #2575fc;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    .link-container a:hover {
+      color: #6a11cb;
     }
   </style>
 </head>
 <body>
 
-<form name="prihlaska" method="POST" data-netlify="true">
-  <h2>Přihláška</h2>
-  
-  <input type="text" name="jmeno" placeholder="Jméno" required>
-  <input type="text" name="prijmeni" placeholder="Příjmení" required>
-  <input type="text" name="bydliste" placeholder="Bydliště" required>
-  <input type="text" name="jmeno_ditete" placeholder="Jméno dítěte" required>
-  <textarea name="poznamka" placeholder="Poznámka / zpráva (nepovinné)"></textarea>
-  
-  <button type="submit">Odeslat přihlášku</button>
+<form name="prihlaska" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+  <h2><i class="fa-solid fa-file-signature"></i> Přihláška</h2>
+
+  <!-- Skrytý field pro ochranu proti spamu -->
+  <input type="hidden" name="form-name" value="prihlaska">
+  <p class="hidden">
+    <label>Nevyplňujte toto pole: <input name="bot-field"></label>
+  </p>
+
+  <div class="input-group">
+    <i class="fa-solid fa-user"></i>
+    <input type="text" name="jmeno" placeholder="Jméno" required>
+  </div>
+  <div class="input-group">
+    <i class="fa-solid fa-user"></i>
+    <input type="text" name="prijmeni" placeholder="Příjmení" required>
+  </div>
+  <div class="input-group">
+    <i class="fa-solid fa-house"></i>
+    <input type="text" name="bydliste" placeholder="Bydliště" required>
+  </div>
+  <div class="input-group">
+    <i class="fa-solid fa-child"></i>
+    <input type="text" name="jmeno_ditete" placeholder="Jméno dítěte" required>
+  </div>
+  <div class="input-group">
+    <i class="fa-solid fa-envelope"></i>
+    <input type="email" name="email" placeholder="Email" required>
+  </div>
+  <div class="input-group">
+    <i class="fa-solid fa-phone"></i>
+    <input type="tel" name="telefon" placeholder="Telefon" required>
+  </div>
+  <div class="input-group">
+    <i class="fa-solid fa-list"></i>
+    <select name="aktivita" required>
+      <option value="">Vyberte aktivitu</option>
+      <option value="plavani">Plavání</option>
+      <option value="tanec">Tanec</option>
+      <option value="anglictina">Angličtina</option>
+      <option value="jine">Jiné</option>
+    </select>
+  </div>
+  <div class="input-group">
+    <i class="fa-solid fa-comment"></i>
+    <textarea name="poznamka" placeholder="Poznámka / zpráva (nepovinné)"></textarea>
+  </div>
+
+  <div class="checkbox-container">
+    <input type="checkbox" name="souhlas" required>
+    <label for="souhlas">Souhlasím se zpracováním osobních údajů</label>
+  </div>
+
+  <button type="submit"><i class="fa-solid fa-paper-plane"></i> Odeslat přihlášku</button>
+
+  <div class="link-container">
+    <a href="#" target="_blank">Přejít na hlavní stránku</a>
+  </div>
 </form>
 
 </body>
